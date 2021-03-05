@@ -27,16 +27,16 @@ Things you may want to cover:
 
 ## usersテーブル
 
-| Column                | Type    | Options     |
-| --------------------- | ------- | ----------- |
-| nick_name             | string  | null: false |
-| email                 | string  | null: false |
-| encrypted_password    | string  | null: false |
-| last_name             | string  | null: false |
-| first_name            | string  | null: false |
-| last_kana             | string  | null: false |
-| first_kana            | string  | null: false |
-| date                  | date    | null: false |
+| Column                | Type    | Options                   |
+| --------------------- | ------- | ------------------------- |
+| nick_name             | string  | null: false               |
+| email                 | string  | null: false, unique: true |
+| encrypted_password    | string  | null: false               |
+| last_name             | string  | null: false               |
+| first_name            | string  | null: false               |
+| last_kana             | string  | null: false               |
+| first_kana            | string  | null: false               |
+| date                  | date    | null: false               |
 
 ### Association
 
@@ -60,7 +60,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_one :purchasers
+- has_one :purchase
 
 ## purchasersテーブル
 
@@ -88,4 +88,4 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :purchasers
+- belongs_to :purchase
