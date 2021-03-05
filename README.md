@@ -31,12 +31,12 @@ Things you may want to cover:
 | --------------------- | ------- | ----------- |
 | nick_name             | string  | null: false |
 | email                 | string  | null: false |
-| password              | string  | null: false |
+| encrypted_password    | string  | null: false |
 | last_name             | string  | null: false |
 | first_name            | string  | null: false |
 | last_kana             | string  | null: false |
 | first_kana            | string  | null: false |
-| user_date             | integer | null: false |
+| date                  | date    | null: false |
 
 ### Association
 
@@ -45,17 +45,17 @@ Things you may want to cover:
 
 ## itemsテーブル
 
-| Column                | Type    | Options     |
-| --------------------- | ------- | ----------- |
-| photo                 | image   | null: false | 
-| name                  | string  | null: false |
-| text                  | text    | null: false |
-| category              | text    | null: false |
-| status                | text    | null: false |
-| delivery_fee          | text    | null: false |
-| shipping_area         | text    | null: false |
-| days_to_ship          | text    | null: false |
-| price                 | integer | null: false |
+| Column                | Type        | Options     |
+| --------------------- | ----------- | ----------- |
+| name                  | string      | null: false |
+| text                  | text        | null: false |
+| category_id           | integer     | null: false |
+| status_id             | integer     | null: false |
+| delivery_fee_id       | integer     | null: false |
+| prefectures_id        | integer     | null: false |
+| days_to_ship_id       | integer     | null: false |
+| price                 | integer     | null: false |
+| user_id               | references  | null: false |
 
 ### Association
 
@@ -82,12 +82,12 @@ Things you may want to cover:
 | Column                | Type    | Options     |
 | --------------------- | ------- | ----------- |
 | postal_code           | integer | null: false | 
-| prefectures           | string  | null: false |
+| prefectures_id        | integer | null: false |
 | municipality          | string  | null: false |
-| address               | text    | null: false |
-| building_name         | text    | null: false |
-| phone_num             | integer | null: false |
+| address               | string  | null: false |
+| building_name         | string  |             |
+| phone_num             | string  | null: false |
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :purchasers
