@@ -45,43 +45,41 @@ Things you may want to cover:
 
 ## itemsテーブル
 
-| Column                | Type        | Options     |
-| --------------------- | ----------- | ----------- |
-| name                  | string      | null: false |
-| text                  | text        | null: false |
-| category_id           | integer     | null: false |
-| status_id             | integer     | null: false |
-| delivery_fee_id       | integer     | null: false |
-| prefectures_id        | integer     | null: false |
-| days_to_ship_id       | integer     | null: false |
-| price                 | integer     | null: false |
-| user_id               | references  | null: false |
+| Column                | Type        | Options                        |
+| --------------------- | ----------- | ------------------------------ |
+| name                  | string      | null: false                    |
+| text                  | text        | null: false                    |
+| category_id           | integer     | null: false                    |
+| status_id             | integer     | null: false                    |
+| delivery_fee_id       | integer     | null: false                    |
+| prefectures_id        | integer     | null: false                    |
+| days_to_ship_id       | integer     | null: false                    |
+| price                 | integer     | null: false                    |
+| user                  | references  | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_many :purchase
+- has_one :purchasers
 
 ## purchasersテーブル
 
-| Column                | Type    | Options     |
-| --------------------- | ------- | ----------- |
-| card_num              | string  | null: false |
-| expiration_month      | string  | null: false |
-| expiration_year       | string  | null: false |
-| security_code         | string  | null: false |
+| Column                | Type        | Options                        |
+| --------------------- | ----------- | ------------------------------ |
+| user                  | references  | null: false, foreign_key: true |
+| item                  | references  | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- has_many :address
+- has_one :address
 
 ## addressesテーブル
 
 | Column                | Type    | Options     |
 | --------------------- | ------- | ----------- |
-| postal_code           | integer | null: false | 
+| postal_code           | string  | null: false | 
 | prefectures_id        | integer | null: false |
 | municipality          | string  | null: false |
 | address               | string  | null: false |
