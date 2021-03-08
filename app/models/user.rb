@@ -17,10 +17,8 @@ class User < ApplicationRecord
   validates_format_of :password, with: PASSWORD_REGEX, message: 'は半角英数字で設定してください'
 
   NAME_REGEX = /\A[あ-んア-ヴ一-龥々ー]+\z/.freeze
-  validates_format_of :last_name, with: NAME_REGEX, message: 'は全角の漢字で設定してください'
-  validates_format_of :first_name, with: NAME_REGEX, message: 'は全角の漢字で設定してください'
+  validates_format_of :last_name, :first_name, with: NAME_REGEX, message: 'は全角の漢字で設定してください'
 
   KANANAME_REGEX = /\A[ア-ヴー]+\z/.freeze
-  validates_format_of :last_kana, with: KANANAME_REGEX, message: 'は全角のカタカナで設定してください'
-  validates_format_of :first_kana, with: KANANAME_REGEX, message: 'は全角のカタカナで設定してください'
+  validates_format_of :last_kana, :first_kana, with: KANANAME_REGEX, message: 'は全角のカタカナで設定してください'
 end
