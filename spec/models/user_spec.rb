@@ -101,7 +101,7 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "Last kana can't be blank"
     end
-    it 'last_kanaが漢字・平仮名・カタカナ以外だと登録できない' do
+    it 'last_kanaがカタカナ以外だと登録できない' do
       @user.last_kana = 'yoshida'
       @user.valid?
       expect(@user.errors.full_messages).to include 'Last kana は全角のカタカナで設定してください'
@@ -111,7 +111,7 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "First kana can't be blank"
     end
-    it 'first_kanaが漢字・平仮名・カタカナ以外だと登録できない' do
+    it 'first_kanaがカタカナ以外だと登録できない' do
       @user.first_kana = 'youhei'
       @user.valid?
       expect(@user.errors.full_messages).to include 'First kana は全角のカタカナで設定してください'
