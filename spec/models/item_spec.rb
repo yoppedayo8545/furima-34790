@@ -38,7 +38,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'category_idが1だと登録できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Category must be other than 1"
       end
@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
       end
       
       it 'status_idが1だと登録できない' do
-        @item.status_id = '1'
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Status must be other than 1"
       end
@@ -62,7 +62,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'delivery_fee_idが1だと登録できない' do
-        @item.delivery_fee_id = '1'
+        @item.delivery_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Delivery fee must be other than 1"
       end
@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'prefectures_idが1だと登録できない' do
-        @item.prefectures_id = '1'
+        @item.prefectures_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Prefectures must be other than 1"
       end
@@ -86,7 +86,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'days_to_ship_idが1だと登録できない' do
-        @item.days_to_ship_id = '1'
+        @item.days_to_ship_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Days to ship must be other than 1"
       end
@@ -109,8 +109,20 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Price is not included in the list"
       end
 
-      it 'priceが半角数字以外だと登録できない' do
-        @item.price = 'ddd'
+      it 'priceが全角文字だと登録できない' do
+        @item.price = '１０００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price is not included in the list"
+      end
+
+      it 'priceが半角英数混合だと登録できない' do
+        @item.price = 'aaa500'
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price is not included in the list"
+      end
+
+      it 'priceが半角英語だと登録できない' do
+        @item.price = 'aaa'
         @item.valid?
         expect(@item.errors.full_messages).to include "Price is not included in the list"
       end
