@@ -21,4 +21,6 @@ class User < ApplicationRecord
 
   KANANAME_REGEX = /\A[ア-ヴー]+\z/.freeze
   validates_format_of :last_kana, :first_kana, with: KANANAME_REGEX, message: 'は全角のカタカナで設定してください'
+
+  has_many :items
 end
