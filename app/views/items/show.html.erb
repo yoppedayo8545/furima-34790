@@ -16,10 +16,10 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        <%= @item.price %>
+        <%= "¥ #{@item.price}" %>
       </span>
       <span class="item-postage">
-        <%= @item.days_to_ship.name %>
+        <%= @item.delivery_fee.name %>
       </span>
     </div>
 
