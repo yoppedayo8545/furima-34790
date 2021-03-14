@@ -44,8 +44,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(
       :name, :text, :category_id, :status_id, :delivery_fee_id, :prefectures_id, :days_to_ship_id, :price, :image, :genre_id
-    )
-          .merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id)
   end
 
   def set_item
@@ -53,9 +52,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    if @item.purchase.present? || current_user.id != @item.user_id 
-     redirect_to root_path  
-    end
+    redirect_to root_path if @item.purchase.present? || current_user.id != @item.user_id
   end
-
 end

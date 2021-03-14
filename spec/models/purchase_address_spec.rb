@@ -18,7 +18,7 @@ RSpec.describe PurchaseAddress, type: :model do
 
       it 'building_nameが空でも購入できる' do
         @purchase_address.building_name = ''
-       expect(@purchase_address).to be_valid
+        expect(@purchase_address).to be_valid
       end
     end
 
@@ -44,7 +44,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'prefectures_idが空だと購入できない' do
         @purchase_address.prefectures_id = 1
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Prefectures must be other than 1"
+        expect(@purchase_address.errors.full_messages).to include 'Prefectures must be other than 1'
       end
 
       it 'municipalityが空だと購入できない' do
@@ -68,7 +68,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numが12桁以上だと購入できない' do
         @purchase_address.phone_num = '123456789999'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Phone num is invalid. Numbers within 11 digits"
+        expect(@purchase_address.errors.full_messages).to include 'Phone num is invalid. Numbers within 11 digits'
       end
 
       it 'phone_numが英字だと購入できない' do
