@@ -12,7 +12,7 @@ FactoryBot.define do
     first_name              { Faker::Japanese::Name.first_name }
     last_kana               { person.last.katakana }
     first_kana              { person.first.katakana }
-    date                    { Faker::Date.backward }
-    id                      { 20 }
+    date                    { Faker::Date.backward }    
+    
   end
 end

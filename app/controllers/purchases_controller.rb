@@ -1,8 +1,8 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
-  before_action :set_purchase, only: [:index]
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_purchase, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
-  before_action :move_to_index, only: [:index]
+  before_action :move_to_index, only: [:index, :create]
 
   def index
     @purchase_address = PurchaseAddress.new
@@ -22,7 +22,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase_address).permit(:postal_code, :prefectures_id, :municipality, :address, :building_name, :phone_num, :purchase_id).merge(
+    params.require(:purchase_address).permit(:postal_code, :prefectures_id, :municipality, :address, :building_name, :phone_num).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )
   end
@@ -46,11 +46,11 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    redirect_to root_path if current_user.id == @item.user_id
-  end
-
-  def move_to_index
-    redirect_to root_path unless @item.purchase.blank?
+    unless @item.purchase.blank?
+     redirect_to root_path 
+    else current_user.id == @item.user_id
+     redirect_to root_path 
+    end
   end
 
 end
