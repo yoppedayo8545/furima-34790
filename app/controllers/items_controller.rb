@@ -55,4 +55,9 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to action: :index if current_user.id != @item.user.id
   end
+
+  def move_to_index
+    redirect_to root_path unless @item.purchase.blank?
+  end
+
 end
