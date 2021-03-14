@@ -44,7 +44,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'prefectures_idが空だと購入できない' do
         @purchase_address.prefectures_id = 1
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Prefectures can't be blank"
+        expect(@purchase_address.errors.full_messages).to include "must be other than 1"
       end
 
       it 'municipalityが空だと購入できない' do
