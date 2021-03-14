@@ -46,10 +46,8 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    unless @item.purchase.blank?
-     redirect_to root_path 
-    else current_user.id == @item.user_id
-     redirect_to root_path 
+    if @item.purchase.present? || current_user.id == @item.user_id 
+     redirect_to root_path  
     end
   end
 
