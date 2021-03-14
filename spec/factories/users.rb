@@ -13,5 +13,6 @@ FactoryBot.define do
     last_kana               { person.last.katakana }
     first_kana              { person.first.katakana }
     date                    { Faker::Date.backward }
+    id                      { 20 }
   end
 end
